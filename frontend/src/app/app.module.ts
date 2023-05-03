@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CatalogComponent } from './home/catalog/catalog.component';
 import { HeaderHomeComponent } from './home/header-home/header-home.component';
+import { PerfilComponent } from './home/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { HeaderHomeComponent } from './home/header-home/header-home.component';
     UpdateRoleComponent,
     CatalogComponent,
     HeaderHomeComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

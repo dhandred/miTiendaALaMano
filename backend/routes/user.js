@@ -1,17 +1,15 @@
 import express from "express";
 import user from "../controllers/user.js";
-import auth from "../middlewares/auth.js";
-import admin from "../middlewares/admin.js";
 import validId from "../middlewares/validId.js";
 const router = express.Router();
 
 router.post("/registerUser", user.registerUser);
-router.post("/registerAdminUser", auth, admin, user.registerAdminUser);
+router.post("/registerAdminUser", user.registerAdminUser);
 router.post("/login", user.login);
-router.get("/listUsers/:name?", auth, admin, user.listAllUser);
-router.get("/getRole/:email", auth, user.getUserRole);
-router.get("/findUser/:_id", auth, validId, admin, user.findUser);
-router.put("/updateUser", auth, admin, user.updateUser);
-router.delete("/deleteUser/:_id", auth, admin, user.deleteUser);
+router.get("/listUsers/:name?", user.listAllUser);
+router.get("/getRole/:email", user.getUserRole);
+router.get("/findUser/:email", validId, user.findUser);
+router.put("/updateUser", user.updateUser);
+router.delete("/deleteUser/:_id", user.deleteUser);
 
 export default router;

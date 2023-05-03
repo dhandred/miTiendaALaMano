@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import moment from "moment";
 
 const registerUser = async (req, res) => {
-  if (!req.body.name || !req.body.email || !req.body.password)
+  if (!req.body.name || !req.body.email || !req.body.direction || !req.body.celNumber || !req.body.password)
     return res.status(400).send({ message: "Incomplete data" });
 
   const existingUser = await user.findOne({ email: req.body.email });
@@ -20,6 +20,8 @@ const registerUser = async (req, res) => {
   const userRegister = new user({
     name: req.body.name,
     email: req.body.email,
+    direction: req.body.direction,
+    celNumber: req.body.celNumber,
     password: passHash,
     roleId: roleId._id,
     dbStatus: true,
@@ -48,6 +50,8 @@ const registerAdminUser = async (req, res) => {
   if (
     !req.body.name ||
     !req.body.email ||
+    !req.body.direction ||
+    !req.body.celNumber ||
     !req.body.password ||
     !req.body.roleId
   )
@@ -62,6 +66,8 @@ const registerAdminUser = async (req, res) => {
   const userRegister = new user({
     name: req.body.name,
     email: req.body.email,
+    direction: req.body.direction,
+    celNumber: req.body.celNumber,
     password: passHash,
     roleId: req.body.roleId,
     dbStatus: true,
@@ -102,7 +108,7 @@ const listAllUser = async (req, res) => {
 
 const findUser = async (req, res) => {
   const userfind = await user
-    .findById({ _id: req.params["_id"] })
+    .findOne({ email: req.params.email })
     .populate("roleId")
     .exec();
   return !userfind
@@ -151,6 +157,8 @@ const updateUser = async (req, res) => {
   const existingUser = await user.findOne({
     name: req.body.name,
     email: req.body.email,
+    direction: req.body.direction,
+    celNumber: req.body.celNumber,
     password: pass,
     roleId: req.body.roleId,
   });
@@ -160,6 +168,8 @@ const updateUser = async (req, res) => {
   const userUpdate = await user.findByIdAndUpdate(req.body._id, {
     name: req.body.name,
     email: req.body.email,
+    direction: req.body.direction,
+    celNumber: req.body.celNumber,
     password: pass,
     roleId: req.body.roleId,
   });

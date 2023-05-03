@@ -1,15 +1,27 @@
+
+
+<div class="bgComponent">
+  <div class="form">
+    <mat-card class="card">
+      <mat-card-title>CATALOGO</mat-card-title>
+      <mat-card-content>
+        <div class="container">
+          <mat-form-field>
+          <img ngSrc="cat.jpg">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
 <div class="container">
   <div class="row">
     <div class="example-container col">
-      <h2>To do</h2>
+      <h2></h2>
 
       <div
         cdkDropList
-        #todoList="cdkDropList"
-        [cdkDropListData]="taskTodo"
-        [cdkDropListConnectedTo]="[inprogressList, doneList]"
         class="example-list"
-        (cdkDropListDropped)="drop($event)"
       >
         <div class="example-box" *ngFor="let item of taskTodo" cdkDrag>
           <div class="accordion_display">
@@ -87,13 +99,10 @@
       </div>
     </div>
     <div class="example-container col">
-      <h2>In-Progress</h2>
+      <h2></h2>
 
       <div
         cdkDropList
-        #inprogressList="cdkDropList"
-        [cdkDropListData]="taskInprogress"
-        [cdkDropListConnectedTo]="[todoList, doneList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
@@ -174,13 +183,11 @@
     </div>
 
     <div class="example-container col">
-      <h2>Done</h2>
-
+      <h2></h2>
+      
       <div
         cdkDropList
         #doneList="cdkDropList"
-        [cdkDropListData]="taskDone"
-        [cdkDropListConnectedTo]="[todoList, inprogressList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
       >
@@ -222,7 +229,7 @@
                   <mat-panel-description>
                     <img
                       class="card-img-top image_center"
-                      src="{{ item.imageUrl }}"
+                      src="../../../assets/download.jpeg"
                     />
                   </mat-panel-description>
                   <mat-action-row>
@@ -260,4 +267,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

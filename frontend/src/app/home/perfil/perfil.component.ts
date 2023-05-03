@@ -8,45 +8,62 @@ import {
 } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrls: ['./perfil.component.css']
 })
-export class RegisterComponent implements OnInit {
-  registerData: any;
+export class PerfilComponent implements OnInit {
+  perfilData: any;
   message: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
+  email: string = '';
 
   constructor(
     private _userService: UserService,
     private _router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) {
-    this.registerData = {};
+    this.perfilData = {};
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.getUserInfo}
 
-  registerUser() {
+
+  getUserInfo() {
+      this.email = this._userService.getEmail()!
+      this._userService.findUser(this.perfilData).subscribe({
+          next: (v) => {
+            this.perfilData.pus
+            this.perfilData = v.perfilData;
+          },
+          error: (e) => {
+            this.message = e.error.message;
+            this.openSnackBarError();
+          },
+          complete: () => console.info('complete'),
+      });
+  }
+
+  updateUser() {
     if (
-      !this.registerData.name ||
-      !this.registerData.email ||
-      !this.registerData.direction ||
-      !this.registerData.celNumber ||
-      !this.registerData.password
+      !this.perfilData.name ||
+      !this.perfilData.email ||
+      !this.perfilData.direction ||
+      !this.perfilData.celNumber ||
+      !this.perfilData.password
     ) {
       this.message = 'Failed process: Imcomplete data';
       this.openSnackBarError();
     } else {
-      this._userService.registerUser(this.registerData).subscribe({
+      this._userService.updateUser(this.perfilData).subscribe({
         next: (v) => {
           localStorage.setItem('token', v.token);
           this._router.navigate(['/saveTask']);
-          this.message = 'Successfull user registration';
+          this.message = 'Successfull user updated';
           this.openSnackBarSuccesfull();
-          this.registerData = {};
+          this.perfilData = {};
         },
         error: (e) => {
           this.message = e.error.message;
@@ -74,4 +91,5 @@ export class RegisterComponent implements OnInit {
       panelClass: ['style-snackBarFalse'],
     });
   }
+
 }

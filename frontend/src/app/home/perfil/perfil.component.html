@@ -1,0 +1,60 @@
+<div class="bgComponent">
+    <div class="form">
+      <mat-card class="card">
+        <mat-card-title>Perfil</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <mat-form-field>
+              <input
+                [(ngModel)]="perfilData.name"
+                matInput
+                placeholder="Nombre completo"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="perfilData.email"
+                type="email"
+                matInput
+                placeholder="Email"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="perfilData.direction"
+                matInput
+                placeholder="Direccion"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="perfilData.celNumber"
+                matInput
+                placeholder="Telefono"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                [(ngModel)]="perfilData.password"
+                type="password"
+                matInput
+                placeholder="Password"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="updateUser()" class="button" mat-raised-button>
+            Registrar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  
+  

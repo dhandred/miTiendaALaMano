@@ -12,6 +12,7 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 
 import { AuthGuard } from './guard/auth.guard';
+import { PerfilComponent } from './home/perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'signUp',
     component: RegisterComponent,
+  },
+  {
+    path: 'perfil',
+    component: PerfilComponent,
   },
   {
     path: 'listUser',

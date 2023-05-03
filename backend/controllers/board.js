@@ -8,7 +8,7 @@ const saveTask = async (req, res) => {
     return res.status(400).send({ message: "Incomplete data" });
 
   const boardSchema = new board({
-    userId: req.user._id,
+    userId: "1222",
     name: req.body.name,
     description: req.body.description,
     taskStatus: "to-do",
@@ -47,7 +47,7 @@ const saveTaskImg = async (req, res) => {
   }
 
   const boardSchema = new board({
-    userId: req.user._id,
+    userId: "1222",
     name: req.body.name,
     description: req.body.description,
     taskStatus: "to-do",
@@ -61,7 +61,7 @@ const saveTaskImg = async (req, res) => {
 };
 
 const listTask = async (req, res) => {
-  const taskList = await board.find({ userId: req.user._id });
+  const taskList = await board.find({ userId: "12222" });
   return taskList.length === 0
     ? res.status(400).send({ message: "You have no assigned tasks" })
     : res.status(200).send({ taskList });

@@ -29,8 +29,8 @@ export class UserService {
     return this._http.get<any>(this.env + 'user/listUsers/' + name);
   }
 
-  findUser(_id: string) {
-    return this._http.get<any>(this.env + 'user/findUser/' + _id);
+  findUser(email: string) {
+    return this._http.get<any>(this.env + 'user/findUser/' + email);
   }
 
   updateUser(user: any) {
@@ -51,6 +51,10 @@ export class UserService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  getEmail() {
+    return localStorage.getItem('email');
   }
 
   isAdmin() {

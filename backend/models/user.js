@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
+  direction: String,
+  celNumber: String,
   password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "roles" },
   dbStatus: Boolean,

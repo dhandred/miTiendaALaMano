@@ -18,7 +18,7 @@
           class="nav-link"
           *ngIf="_userService.loggedIn()"
           routerLink="listTask"
-          >List task</a
+          >Catalogo</a
         >
       </li>
       <li class="nav-item">
@@ -26,7 +26,16 @@
           class="nav-link"
           *ngIf="_userService.loggedIn()"
           routerLink="saveTask"
-          >Create task</a
+          >Carrito</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          *ngIf="_userService.loggedIn()"
+          mat-button
+          routerLink="perfil"
+          >Perfil</a
         >
       </li>
 
@@ -58,6 +67,15 @@
         </ul>
       </div>
 
+
+      <li class="nav-item active">
+        <a
+          class="nav-link"
+          *ngIf="!_userService.loggedIn()"
+          routerLink="listTask"
+          >Catalogo</a
+        >
+      </li>
       <li class="nav-item">
         <a
           class="nav-link"
